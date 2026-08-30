@@ -1,5 +1,5 @@
 26311033_SonJunHwe_GameProject\
 Student ID:26311033\
-Son Jun Hwe\
-C++\
-Subject setting and generate Git storage.
+Name:Son Jun Hwe\
+Lesson:C++ game developing\
+Subject:week 1, setting and generate Git storage.
