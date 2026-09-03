@@ -1,9 +1,12 @@
-#include "Config.h"
+#include "WindowMain.h"
 
 int main()
 {
-    //RenderWindow();
+    WindowMain window{};
 
-    RenderImage();
+    window.Setup();
+    window.Create();
+    window.Run();
+    window.Destroy();
 }
 
