@@ -9,13 +9,13 @@ public:
 	void Run();
 
 private:
-	const int x = 0;
-	const int y = 0;
-	const int width = 1280;
-	const int height = 720;
-	const char* name = "MyTinyMarvelousWindow";
+	const int m_x = 0;
+	const int m_y = 0;
+	const int m_width = 1280;
+	const int m_height = 720;
+	const char* m_name = "MyWindow\n";
 
-	const int color = 0x77777777;
+	const int m_color = 0x77777777;
 
 };
 

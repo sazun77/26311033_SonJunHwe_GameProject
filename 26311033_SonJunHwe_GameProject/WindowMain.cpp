@@ -23,7 +23,7 @@
 void WindowMain::Setup()
 {
 	// SDK 초기화
-	std::cout << "Initiallise SDK\n";
+	std::cout << "Initialliseing SDK\n";
 	g2_InitSdk();
 
 }
@@ -31,10 +31,10 @@ void WindowMain::Setup()
 void WindowMain::Create()
 {
 	// 윈도우 색 설정.
-	g2_SetClearColor(WindowMain::color);
+	g2_SetClearColor(m_color);
 	// 윈도우 생성
-	std::cout << "Create Window\n";
-	g2_CreateWin(WindowMain::x, WindowMain::y, WindowMain::width, WindowMain::height, WindowMain::name);
+	std::cout << "Createing Window\n";
+	g2_CreateWin(m_x, m_y, m_width, m_height, m_name);
 }
 
 void WindowMain::Run()
@@ -45,6 +45,6 @@ void WindowMain::Run()
 
 void WindowMain::Destroy()
 {
-	std::cout << "Desroyed Window\n";
+	std::cout << "Desroying Window\n";
 	g2_DestroyWin();
 }
