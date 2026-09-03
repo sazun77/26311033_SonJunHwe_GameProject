@@ -1,12 +1,13 @@
 #pragma once
+#include "WindowSceneGraphic.h"
 
 class WindowMain
 {
 public:
 	void Setup();
-	void Create();
-	void Destroy();
+	int SetupRender();
 	void Run();
+	void Destroy();
 
 private:
 	const int m_x = 0;
@@ -16,6 +17,7 @@ private:
 	const char* m_name = "MyWindow\n";
 
 	const int m_color = 0x77777777;
-
+private:
+	WindowSceneGraphic SceneGraphic{};
 };
 

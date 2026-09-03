@@ -1,11 +1,12 @@
 #include "WindowMain.h"
+#
+WindowMain window{};
 
 int main()
 {
-    WindowMain window{};
+
 
     window.Setup();
-    window.Create();
     window.Run();
     window.Destroy();
 }
