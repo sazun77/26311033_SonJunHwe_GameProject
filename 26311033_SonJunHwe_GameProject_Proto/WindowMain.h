@@ -1,10 +1,11 @@
 #pragma once
-#include "WindowImage.h"
+#include "TextureDrawer.h"
 
 class WindowMain
 {
 public:
 	void Setup();
+	int SetupRender();
 	void Run();
 	void Destroy();
 
@@ -17,6 +18,6 @@ private:
 
 	const int m_color = 0x77777777;
 private:
-
+	TextureDrawer SceneGraphic{};
 };
 

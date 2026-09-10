@@ -1,3 +1,4 @@
+#pragma once
 // link the 2d game library
 #if defined(_DEBUG)
 #if defined(_M_X64) // 64-bit 아키텍처
@@ -17,25 +18,20 @@
 #include "glc2d.h"
 #include <stdio.h>
 
-#include "WindowSceneGraphic.h"
-#include <iostream>
-
-
-void WindowSceneGraphic::Render()
+class WindowImage
 {
-	VEC2 pos(width, height);
-	//VEC2 pos(0, 0);
-	g2_Draw2D(imageIdx, nullptr, &pos);	//pos는 생략 가능한 듯.
-}
+public:
+	// m_imageIdx,m_width,m_height,m_imageFile을 설정함.
+	void Setup(const char* imageFile = "Texture/tst.png");
+	void Render();
+	void End();
 
-void WindowSceneGraphic::Setup()
-{
-	imageIdx = g2_TextureLoad(imageP);
-	width = g2_TextureWidth(imageIdx);
-	height = g2_TextureHeight(imageIdx);
-}
+private:
+	int m_imageIdx{};
+	int m_width{};
+	int m_height{};
 
-void WindowSceneGraphic::End()
-{
-	g2_TextureRelease(imageIdx);
-}
+	const char* m_imageFile{};
+};
+
+//    g2_SetRender(Render);

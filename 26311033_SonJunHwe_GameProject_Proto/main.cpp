@@ -1,14 +1,13 @@
 #include "WindowMain.h"
-#include <iostream>
 
 WindowMain window{};
 
 int main()
 {
 
+
     window.Setup();
     window.Run();
-	window.Destroy();
+    window.Destroy();
 }
 
-// glc2d, Microsoft.DXSDK.D3DX

@@ -21,7 +21,10 @@
 #include <iostream>
 
 extern WindowMain window;
-
+int Render()
+{
+	return window.SetupRender();
+}
 
 void WindowMain::Setup()
 {
@@ -31,10 +34,25 @@ void WindowMain::Setup()
 	// 윈도우 색 설정.
 	std::cout << "Window color set\n";
 	g2_SetClearColor(m_color);
-
+	//화면 출력 함수 등록.
+	g2_SetRender(Render);
 	// 윈도우 생성
 	std::cout << "Createing Window\n";
 	g2_CreateWin(m_x, m_y, m_width, m_height, m_name);
+
+	// 씬 셋업.
+	std::cout << "Scene Graphic setup\n";
+
+	SceneGraphic.Setup("Texture/tst.png");
+
+}
+
+int WindowMain::SetupRender()
+{
+	std::cout << "Rendering start\n";
+	SceneGraphic.SetPosition({ 800.0f,300.0f });
+	SceneGraphic.Render();
+	return 0;
 }
 
 void WindowMain::Run()
