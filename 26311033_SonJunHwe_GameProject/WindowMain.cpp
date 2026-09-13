@@ -17,13 +17,29 @@
 #include "glc2d.h"
 #include <stdio.h>
 //
-#include "WindowMain.h"
 #include <iostream>
+#include "WindowMain.h"
 
 extern WindowMain window;
 float testPos{ 0.0f };
-// 랜더 함수. SetupRender를 호출함.
-// SetupRender은 
+// 랜더 함수. RenderDetailes를 호출함.
+// RenderDetailes은 일종의 update(), main()의 역할인 듯?
+int RenderMain()
+{
+	return window.RenderDetailes();
+}
+
+int WindowMain::RenderDetailes()
+{
+	std::cout << "Rendering start\n";
+
+	for (auto& image : m_images)
+	{
+		image.RenderMain();
+	}
+
+	return 0;
+}
 
 void WindowMain::Setup()
 {
@@ -34,43 +50,16 @@ void WindowMain::Setup()
 	std::cout << "Window color set\n";
 	g2_SetClearColor(m_color);
 	//화면 출력 함수 등록.
-	g2_SetRender(Render);
+	g2_SetRender(RenderMain);
 	// 윈도우 생성
 	std::cout << "Createing Window\n";
 
 
-	int x = m_pos.x;
-	int y = m_pos.y;
-	g2_CreateWin(x,y, m_width, m_height, m_name);
+
+	g2_CreateWin(static_cast<int>(m_pos.x), static_cast<int>(m_pos.y), m_width, m_height, m_name);
 
 	// 씬 셋업.
 	std::cout << "Scene Graphic setup\n";
-
-	m_image_test.Setup("Texture/tst.png");
-	m_image_test02.Setup("Texture/Icon_Atk.png");
-
-}
-
-int Render()
-{
-	++testPos;
-	return window.RenderDetailes();
-}
-
-int WindowMain::RenderDetailes()
-{
-	std::cout << "Rendering start\n";
-	if (testPos > 10.0f)
-	{
-		m_image_test02.Setup("Texture/Icon_Atk.png");
-	}
-	else if (testPos > 5.0f)
-	{
-		m_image_test02.End();
-	}
-	m_image_test.Render({ testPos,testPos });
-	m_image_test02.Render({ 400.0f - testPos,300.0f - testPos });
-	return 0;
 }
 
 void WindowMain::Run()
@@ -84,4 +73,51 @@ void WindowMain::Destroy()
 {
 	std::cout << "Desroying Window\n";
 	g2_DestroyWin();
+}
+
+// 초기 좌표를 입력하지 않을 경우 초기 좌표는 (0,0)으로 설정됩니다.
+// 추가된 요소가 몇 번째 인덱스인지를 반환합니다.
+int WindowMain::SetImageNew(const char* fileP, const int x, const int y)
+{
+	TextureDrawer td{};
+	td.Setup(fileP);
+	td.SetPos(x, y);
+
+	m_images.push_back(td);
+
+	return m_images.size() - 1;
+}
+
+void WindowMain::SetImagePos(const int imageIdx, const int x, const int y)
+{
+	m_images[imageIdx].SetPos(x, y);
+}
+
+int WindowMain::GetWidth()
+{
+	return m_width;
+}
+int WindowMain::GetHeight()
+{
+	return m_height;
+}
+
+int WindowMain::GetImageWidth(const int imageIdx)
+{
+	return m_images[imageIdx].GetWidth();
+}
+
+int WindowMain::GetImageHeight(const int imageIdx)
+{
+	return m_images[imageIdx].GetHeight();
+}
+
+int WindowMain::GetImageX(const int imageIdx)
+{
+	return m_images[imageIdx].GetX();
+}
+
+int WindowMain::GetImageY(const int imageIdx)
+{
+	return m_images[imageIdx].GetY();
 }

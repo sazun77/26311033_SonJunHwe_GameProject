@@ -9,18 +9,26 @@ class TextureDrawer
 {
 public:
 	void Setup(const char* fileName);
-	void Render(const VEC2& pos);
+	void RenderMain();
 	void End();
+
+	void SetPos(const int x,const int y);
+
+	int GetWidth();
+	int GetHeight();
+	int GetIndex();
+	int GetX();
+	int GetY();
 private:
 	int m_imageIdx{};
 	int m_width{};
 	int m_height{};
 	VEC2 m_pos{};
-	
-	char m_imageP[250]{};
+
+	char m_imageP[FILENAME_MAX]{};
 };
 
-//int Render()
+//int RenderMain()
 //{
 //	VEC2 pos(400, 200);
 //

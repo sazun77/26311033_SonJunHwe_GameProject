@@ -23,10 +23,9 @@
 
 // 좌표를 입력하면 해당 위치에 이미지 표시.
 // 렌더를 안하면 바로 다음render()에서 아라야시키 당하는 듯.
-//m_pos는 생략 가능한 듯.
-void TextureDrawer::Render(const VEC2& pos)
+// m_pos는 생략 가능한 듯.
+void TextureDrawer::RenderMain()
 {
-	m_pos = pos;
 	g2_Draw2D(m_imageIdx, nullptr, &m_pos);	
 }
 
@@ -46,4 +45,35 @@ void TextureDrawer::Setup(const char* fileName)
 void TextureDrawer::End()
 {
 	g2_TextureRelease(m_imageIdx);
+}
+
+void TextureDrawer::SetPos(const int x, const int y)
+{
+	m_pos.x = static_cast<float>(x);
+	m_pos.y = static_cast<float>(y);
+}
+
+int TextureDrawer::GetWidth()
+{
+	return m_width;
+}
+
+int TextureDrawer::GetHeight()
+{
+	return m_height;
+}
+
+int TextureDrawer::GetIndex()
+{
+	return m_imageIdx;
+}
+
+int TextureDrawer::GetX()
+{
+	return static_cast<int>(m_pos.x);
+}
+
+int TextureDrawer::GetY()
+{
+	return static_cast<int>(m_pos.y);
 }
