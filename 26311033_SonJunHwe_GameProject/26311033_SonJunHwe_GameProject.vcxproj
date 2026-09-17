@@ -126,6 +126,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="SoundEffectter.cpp" />
     <ClCompile Include="TextureDrawer.cpp" />
     <ClCompile Include="WindowMain.cpp" />
   </ItemGroup>
@@ -134,6 +135,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Constants.h" />
+    <ClInclude Include="SoundEffectter.h" />
     <ClInclude Include="TextureDrawer.h" />
     <ClInclude Include="WindowMain.h" />
   </ItemGroup>

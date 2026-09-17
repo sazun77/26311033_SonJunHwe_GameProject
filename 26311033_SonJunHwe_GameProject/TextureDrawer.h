@@ -5,6 +5,8 @@
 #include <stdio.h>
 #include <string>
 
+#include "Constants.h"
+
 class TextureDrawer
 {
 public:
@@ -25,7 +27,7 @@ private:
 	int m_height{};
 	VEC2 m_pos{};
 
-	char m_imageP[FILENAME_MAX]{};
+	char m_imageP[FILENAMEMAX]{};
 };
 
 //int RenderMain()

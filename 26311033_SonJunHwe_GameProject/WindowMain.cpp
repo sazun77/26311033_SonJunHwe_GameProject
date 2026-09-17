@@ -18,27 +18,41 @@
 #include <stdio.h>
 //
 #include <iostream>
+#include <thread>
+#include <time.h>
 #include "WindowMain.h"
+#include "SoundEffectter.h"
 
 extern WindowMain window;
+extern SoundEffectter testSound;
 float testPos{ 0.0f };
 // 랜더 함수. RenderDetailes를 호출함.
 // RenderDetailes은 일종의 update(), main()의 역할인 듯?
 int RenderMain()
 {
+	const KEYCODE* pKey = g2_GetKeyboard();
+
+	if (pKey[VK_SPACE])
+	{
+		std::cout << "sound Played." << pKey << '\n';
+		testSound.SoundPlay();
+
+		window.m_images[0].SetPos(g2_GetMouseX(), g2_GetMouseY());
+	}
+
+	std::this_thread::sleep_for(std::chrono::milliseconds(GAMETICK));
 	return window.RenderDetailes();
 }
-
 int WindowMain::RenderDetailes()
 {
-	std::cout << "Rendering start\n";
+	std::cout << "Rendering start..."<<time(NULL)<<'\n';
 
 	for (auto& image : m_images)
 	{
 		image.RenderMain();
 	}
 
-	return 0;
+	return SUCCESS;
 }
 
 void WindowMain::Setup()
@@ -85,7 +99,7 @@ int WindowMain::SetImageNew(const char* fileP, const int x, const int y)
 
 	m_images.push_back(td);
 
-	return m_images.size() - 1;
+	return static_cast<int>(m_images.size()) - 1;
 }
 
 void WindowMain::SetImagePos(const int imageIdx, const int x, const int y)
