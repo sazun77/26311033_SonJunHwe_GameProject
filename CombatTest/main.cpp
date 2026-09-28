@@ -1,7 +1,11 @@
 #include <iostream>
-#include <BattleMain.h>
+#include "Dice.h"
+#include "Character.h"
 
 int main()
 {
+	Dice dice{};
+	dice.DiceSetup();
+
 
 }
