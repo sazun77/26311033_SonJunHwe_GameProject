@@ -7,5 +7,10 @@ int main()
 	Dice dice{};
 	dice.DiceSetup();
 
+	Character player{};
+	Character enemy{};
+	player.SetStandard(&dice);
+	enemy.SetStandard(&dice);
+
 
 }

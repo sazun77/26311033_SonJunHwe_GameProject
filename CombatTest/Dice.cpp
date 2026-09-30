@@ -2,13 +2,21 @@
 #include "Dice.h"
 #include "Character.h"
 
-void Dice::DiceSetup()
+void Dice::DiceSetup(int seedFix)
 {
-	std::random_device rd;
-	m_mt.seed(rd());
+
+	if (seedFix == DICE_SEED_FIX_OFF)
+	{
+		std::random_device rd;
+		m_mt.seed(rd());
+	}
+	else
+	{
+		m_mt.seed(seedFix);
+	}
 }
 
-int Dice::DiceRoll(DICE dRank)
+int Dice::DiceRoll(DICERANK dRank)
 {
 	std::uniform_int_distribution<int> dice(1, dRank);
 	return dice(m_mt);
