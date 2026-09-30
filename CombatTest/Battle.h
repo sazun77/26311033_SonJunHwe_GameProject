@@ -3,9 +3,16 @@
 class Battle
 {
 public:
-	bool BattleMain(Character& allay,Character& enemy);
-	bool SceneGuard();
+
+	void Setup(Character* player, Character* enemy);
+	bool BattleMain();
+
 	bool SceneAtk();
+	bool SceneDefence();
+	bool SceneGuard();
+	bool SceneAvoid();
 public:
 	bool m_isAllayTurn{ true };
+	Character* m_playerP{};
+	Character* m_enemyP{};
 };
