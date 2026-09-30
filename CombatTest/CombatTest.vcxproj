@@ -127,11 +127,13 @@
     <ClCompile Include="Dice.cpp" />
     <ClCompile Include="Character.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="MyHeader.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Battle.h" />
     <ClInclude Include="Dice.h" />
     <ClInclude Include="Character.h" />
+    <ClInclude Include="MyHeader.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

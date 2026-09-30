@@ -12,11 +12,11 @@ void Character::SetStandard(Dice* diceP)
 
 void Character::SetHp(int damage)
 {
-	m_hp -= damage;
+	m_hpCurrent -= damage;
 
-	if (0>m_hp)
+	if (0>m_hpCurrent)
 	{
-		m_hp = 0;
+		m_hpCurrent = 0;
 	}
 }
 

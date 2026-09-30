@@ -10,25 +10,16 @@ void Battle::Setup(Character* player, Character* enemy)
 
 bool Battle::BattleMain()
 {
-	Character* p_attacker{};
-	Character* p_defender{};
+	Character* attackerP{};
+	Character* defenderP{};
 
 	while (true)
 	{
-		if (m_isAllayTurn)
-		{
-			p_attacker = m_playerP;
-			p_defender = m_enemyP;
-		}
-		else
-		{
-			p_attacker = m_enemyP;
-			p_defender = m_playerP;
-		}
+		SceneSetTurn(&attackerP, &defenderP);
 
-		SceneAtk();
+		int powerAttack = SceneAtk(attackerP);
 
-		SceneDefence();
+		SceneDefence(defenderP, powerAttack);
 
 
 
@@ -36,12 +27,28 @@ bool Battle::BattleMain()
 	return true;
 }
 
-bool Battle::SceneGuard()
+void Battle::SceneSetTurn(Character** attackerPP, Character** defenderPP)
 {
-	return false;
+	if (m_isAllayTurn)
+	{
+		*attackerPP = m_playerP;
+		*defenderPP = m_enemyP;
+	}
+	else
+	{
+		*attackerPP = m_enemyP;
+		*defenderPP = m_playerP;
+	}
 }
 
-bool Battle::SceneAtk()
+int Battle::SceneGuard(Character* defenderP, int powerAtk)
 {
-	return false;
+	int powerFine = powerAtk - defenderP->Guard();
+	
+	if (powerFine < CHARACTER_GUARD_DMG_MIN)
+	{
+		powerFine = CHARACTER_GUARD_DMG_MIN;
+	}
+
+	return powerFine;
 }
