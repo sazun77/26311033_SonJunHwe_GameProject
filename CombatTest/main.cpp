@@ -9,8 +9,8 @@ int main()
 
 	Character player{};
 	Character enemy{};
-	player.SetStandard(&dice);
-	enemy.SetStandard(&dice);
+	player.SetSetupStandard("Player", & dice);
+	enemy.SetSetupStandard("Enemy", & dice);
 
 
 }

@@ -8,12 +8,13 @@ public:
 	
 	bool BattleMain();
 		void SceneSetTurn(Character** attackerPP, Character** defenderPP);
+		
 		int SceneAtk(Character* attackerP);
-		bool SceneDefence(Character* defenderP, int powerAtk);//isAlive return
+		
+		COMMAND SceneDefence(Character* defenderP, int powerAtk);//isAlive return
 			int SceneGuard(Character* defenderP, int powerAtk);	// 공격 위력 - 수비 위력 반환.
 			bool SceneAvoid(Character* defenderP, int powerAtk);	// 회피 성공 여부 리턴.
-			bool SceneDamageStep(int powerFine); //isAlive return
-
+		bool SceneDamageStep(Character* attackerP, Character* defenderP, COMMAND inputCommand, int powerAtk);
 public:
 	bool m_isAllayTurn{ true };
 	Character* m_playerP{};

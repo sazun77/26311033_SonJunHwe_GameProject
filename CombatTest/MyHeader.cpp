@@ -27,7 +27,7 @@ int InputInt(std::string announce)
             return value;
         }
 
-        std::cout << "잘못된 입력입니다.\n";
+        std::cout << "잘못된 입력입니다. 다시 시도하십시오.\n";
     }
 }
 
@@ -52,4 +52,9 @@ std::string InputString(std::string announce)
 
         std::cout << "잘못된 입력입니다. 다시 시도하십시오.\n";
     }
+}
+
+void Messege(std::string input)
+{
+    std::cout << input;
 }
