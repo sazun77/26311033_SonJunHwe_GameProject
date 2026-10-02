@@ -58,3 +58,30 @@ void Messege(std::string input)
 {
     std::cout << input;
 }
+
+void ToNext(bool doSkip)
+{
+    if (doSkip)
+    {
+        return;
+    }
+
+    std::string input;
+
+
+    std::cout << ">>\n";
+
+
+    while (true)
+    {
+        if (std::getline(std::cin, input))
+        {
+            return;
+        }
+
+        std::cin.clear();
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+
+        std::cout << "잘못된 입력입니다. 다시 시도하십시오.\n";
+    }
+}

@@ -20,12 +20,21 @@ public:
 
 	void SetSetupStandard(std::string name, Dice* diceP);
 	bool SetHp(int damage = 0);
+
+	std::string GetName();
+	int GetHpMax();
+	int GetHpCurrent();
+	int GetAtk();
+	int GetDef();
+	int GetDex();
+
+	void ShowName();
+	void ShowHp();
+	void ShowStatus();
+
 	int Attack();
 	int Guard();
 	int Avoid();
-
-	std::string GetName();
-	int GetHpCurrent();
 private:
 	int m_hpMax{ CHARACTER_HP };
 	int m_hpCurrent{ CHARACTER_HP };

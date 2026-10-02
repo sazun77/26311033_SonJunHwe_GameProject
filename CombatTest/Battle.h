@@ -7,6 +7,8 @@ public:
 	void Setup(Character* player, Character* enemy);
 	
 	bool BattleMain();
+	void SceneBroadCast();
+
 		void SceneSetTurn(Character** attackerPP, Character** defenderPP);
 		
 		int SceneAtk(Character* attackerP);

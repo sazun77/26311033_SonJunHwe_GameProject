@@ -15,20 +15,36 @@ bool Battle::BattleMain()
 	Character* attackerP{};
 	Character* defenderP{};
 
+	m_playerP->ShowName();
+	m_playerP->ShowStatus();
+	Messege("\n");
+	m_enemyP->ShowName();
+	m_enemyP->ShowStatus();
+
 	while (true)
 	{
-		SceneSetTurn(&attackerP, &defenderP);
+		SceneBroadCast();
+		ToNext();
+
+		SceneSetTurn(&attackerP, &defenderP); 
+		ToNext();
 
 		int powerAttack = SceneAtk(attackerP);
+		ToNext();
 
-		COMMAND inputCommand{ SceneDefence(defenderP, powerAttack) };
-		
+		COMMAND inputCommand{ SceneDefence(defenderP,powerAttack) }; 
+		ToNext();
+
 		bool isDefenderAlive = SceneDamageStep(attackerP, defenderP, inputCommand, powerAttack);
+		ToNext();
 
 		if (!isDefenderAlive)
 		{
 			break;
 		}
+
+		//InputString("다음으로 진행하려면 확인을 눌러주세요.\n");
+		Messege("=======\n");
 	}
 
 	if (0 == m_playerP->GetHpCurrent())
@@ -43,6 +59,17 @@ bool Battle::BattleMain()
 		return false;
 
 	}
+}
+
+void Battle::SceneBroadCast()
+{
+	Character* ptr{ m_playerP };
+	std::cout << ptr->GetName() << '\n';
+	std::cout << "HP : " << ptr->GetHpCurrent() << '/' << ptr->GetHpMax() << '\n';
+	
+	ptr= m_enemyP;
+	std::cout << ptr->GetName() << '\n';
+	std::cout << "HP : " << ptr->GetHpCurrent() << '/' << ptr->GetHpMax() << '\n';
 }
 
 void Battle::SceneSetTurn(Character** attackerPP, Character** defenderPP)
@@ -65,36 +92,59 @@ int Battle::SceneAtk(Character* attackerP)
 {
 	int powerAttack{ attackerP->Attack() };
 
-	std::cout << "attack power : " << powerAttack << '\n';
+	if(m_isAllayTurn)
+	{
+		InputString("공격하려면 확인을 눌러주세요.");
+	}
+
+	std::cout << "attack power : " << powerAttack << std::showpos<<'(' << attackerP->GetAtk() << ")\n"<< std::noshowpos;
 
 	return powerAttack;
 }
 
 COMMAND Battle::SceneDefence(Character* defenderP, int powerAtk)
 {
-	while(true)
+	if (m_isAllayTurn)
+	{
+		if (powerAtk <= DR_20ICOSAHEDRON / 2)
+		{
+			std::cout << defenderP->GetName() << " chosed avoid\n";
+			return AVOID;
+		}
+		else
+		{
+			std::cout << defenderP->GetName() << " chosed guard\n";
+			return GUARD;
+		}
+	}
+	else
 	{
 		Messege("Chose deffence type.\n");
 		std::cout << GUARD << " : guard\n";
 		std::cout << AVOID << " : avoid\n";
 
-		COMMAND inputCommand = static_cast<COMMAND>(InputInt());
+		while (true)
+		{
+			Messege("Input : ");
 
-		switch (inputCommand)
-		{
-		case(GUARD):
-		{
-			return GUARD;
-		}
-		case(AVOID):
-		{
-			return AVOID;
-		}
-		default:
-		{
-			Messege("Wrong input, please try again\n");
-			continue;
-		}
+			COMMAND inputCommand = static_cast<COMMAND>(InputInt());
+
+			switch (inputCommand)
+			{
+			case(GUARD):
+			{
+				return GUARD;
+			}
+			case(AVOID):
+			{
+				return AVOID;
+			}
+			default:
+			{
+				Messege("Wrong input, please try again\n");
+				continue;
+			}
+			}
 		}
 	}
 }
@@ -104,8 +154,8 @@ int Battle::SceneGuard(Character* defenderP, int powerAtk)
 	int powerGuard{ defenderP->Guard() };
 	int powerFine = powerAtk - powerGuard;
 	
-	std::cout << "Guard power : " << powerGuard << '\n';
-	if (powerFine < CHARACTER_GUARD_POWER_MIN)
+	std::cout << "Guard power : " << powerGuard << std::showpos<< '(' << defenderP->GetDef() << ")\n"<< std::noshowpos;
+	if (powerFine <= CHARACTER_GUARD_POWER_MIN)
 	{
 		Messege("Minimum damage!\n");
 		powerFine = CHARACTER_GUARD_POWER_MIN;
@@ -118,7 +168,7 @@ bool Battle::SceneAvoid(Character* defenderP, int powerAtk)
 {
 	int powerAvoid{ defenderP->Avoid() };
 
-	std::cout << "Avoid power : " << powerAvoid << '\n';
+	std::cout <<"Avoid power : " << powerAvoid << std::showpos << '(' << defenderP->GetDex() << ")\n"<< std::noshowpos;
 	if (powerAvoid >= powerAtk)
 	{
 		Messege("Avoid success!\n");
@@ -133,12 +183,13 @@ bool Battle::SceneAvoid(Character* defenderP, int powerAtk)
 
 bool Battle::SceneDamageStep(Character* attackerP, Character* defenderP,COMMAND inputCommand,int powerAtk)
 {
-	int powerFine{};
+	int powerFine{powerAtk};
 	switch (inputCommand)
 	{
 	case(GUARD):
 	{
 		powerFine = SceneGuard(defenderP, powerAtk);
+		break;
 	}
 	case(AVOID):
 	{
@@ -146,7 +197,12 @@ bool Battle::SceneDamageStep(Character* attackerP, Character* defenderP,COMMAND 
 
 		if (isAvoided)
 		{
+			m_isAllayTurn = !m_isAllayTurn;
 			return true;
+		}
+		else
+		{
+			break;
 		}
 	}
 	}
