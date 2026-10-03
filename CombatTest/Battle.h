@@ -7,7 +7,7 @@ public:
 	void Setup(Character* player, Character* enemy);
 	
 	bool BattleMain();
-	void SceneBroadCast();
+	void SceneBroadCast(const unsigned int round);
 
 		void SceneSetTurn(Character** attackerPP, Character** defenderPP);
 		

@@ -1,18 +1,18 @@
 #include <iostream>
 #include "Dice.h"
 #include "Character.h"
-
-void Character::SetSetupStandard(std::string name ,Dice* diceP)
+#include "MyHeader.h"
+void Character::SetSetupStandard(std::string name ,Dice* diceP,int level)
 {
 	m_name = name;
 	m_diceP = diceP;
-
-	m_atk = m_diceP->DiceRoll(DR_4TETRAHEDRON) - DR_4TETRAHEDRON/2;
-	m_def = m_diceP->DiceRoll(DR_4TETRAHEDRON) - DR_4TETRAHEDRON / 2;
-	m_dex = m_diceP->DiceRoll(DR_4TETRAHEDRON) - DR_4TETRAHEDRON / 2;
+	m_level = level;
+	//m_atk = m_diceP->DiceRoll(m_dr) - (m_dr / 3);
+	//m_def = m_diceP->DiceRoll(m_dr) - (m_dr / 3);
+	//m_dex = m_diceP->DiceRoll(m_dr) - (m_dr / 3);
 }
 
-bool Character::SetHp(int damage)
+bool Character::UpdateHp(int damage)
 {
 	m_hpCurrent -= damage;
 
@@ -47,24 +47,27 @@ void Character::ShowHp()
 
 void Character::ShowStatus()
 {
-	std::cout << "Atk : " << std::showpos << m_atk << std::noshowpos << '\n';
-	std::cout << "Def : " << std::showpos << m_def << std::noshowpos << '\n';
-	std::cout << "Dex : " << std::showpos << m_dex << std::noshowpos << '\n';
+	ShowHp();
+	std::cout << "Level : " << m_level << '\n';
+	std::cout << "Exp : " << m_exp<<'/'<< << '\n';
+	std::cout << "Atk : " << ToSignedNumber(m_atk) << '\n';
+	std::cout << "Def : " << ToSignedNumber(m_def) << '\n';
+	std::cout << "Dex : " << ToSignedNumber(m_dex) << '\n';
 }
 
 int Character::Attack()
 {
-	return m_atk + m_diceP->DiceRoll(DR_20ICOSAHEDRON);
+	return m_atk + m_diceP->DiceRoll(m_dr);
 }
 
 int Character::Guard()
 {
-	return m_def + m_diceP->DiceRoll(DR_20ICOSAHEDRON);
+	return m_def + m_diceP->DiceRoll(m_dr);
 }
 
 int Character::Avoid()
 {
-	return m_dex + m_diceP->DiceRoll(DR_20ICOSAHEDRON);
+	return m_dex + m_diceP->DiceRoll(m_dr);
 }
 
 std::string Character::GetName()

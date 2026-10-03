@@ -59,7 +59,7 @@ void Messege(std::string input)
     std::cout << input;
 }
 
-void ToNext(bool doSkip)
+void ToNext(const bool doSkip)
 {
     if (doSkip)
     {
@@ -84,4 +84,25 @@ void ToNext(bool doSkip)
 
         std::cout << "잘못된 입력입니다. 다시 시도하십시오.\n";
     }
+}
+
+std::string ToSignedNumber(const int num)
+{
+    std::string str{};
+
+    if (0 == num)
+    {
+        str = '0';
+    }
+    else if (0 < num)
+    {
+        str += "+";
+        str += std::to_string(num);
+    }
+    else
+    {
+        str = std::to_string(num);
+    }
+    
+    return str;
 }

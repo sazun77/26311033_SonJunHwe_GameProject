@@ -4,6 +4,8 @@
 #include "Character.h"
 #include "Battle.h"
 
+using std::cout;
+
 void Battle::Setup(Character* player, Character* enemy)
 {
 	m_playerP = player;
@@ -14,26 +16,28 @@ bool Battle::BattleMain()
 {
 	Character* attackerP{};
 	Character* defenderP{};
+	unsigned int round{};
 
 	m_playerP->ShowName();
 	m_playerP->ShowStatus();
 	Messege("\n");
 	m_enemyP->ShowName();
 	m_enemyP->ShowStatus();
+	Messege("battle start\n");
+	Messege("=====\n");
 
 	while (true)
 	{
-		SceneBroadCast();
-		ToNext();
+		SceneBroadCast(++round);
+		cout << '\n';
 
 		SceneSetTurn(&attackerP, &defenderP); 
-		ToNext();
+		cout << '\n';
 
 		int powerAttack = SceneAtk(attackerP);
-		ToNext();
+		//ToNext();
 
 		COMMAND inputCommand{ SceneDefence(defenderP,powerAttack) }; 
-		ToNext();
 
 		bool isDefenderAlive = SceneDamageStep(attackerP, defenderP, inputCommand, powerAttack);
 		ToNext();
@@ -57,19 +61,20 @@ bool Battle::BattleMain()
 	{
 		Messege("You win!\n");
 		return false;
-
 	}
 }
 
-void Battle::SceneBroadCast()
+void Battle::SceneBroadCast(const unsigned int round)
 {
+	std::cout << "round " << round << '\n';
+
 	Character* ptr{ m_playerP };
-	std::cout << ptr->GetName() << '\n';
-	std::cout << "HP : " << ptr->GetHpCurrent() << '/' << ptr->GetHpMax() << '\n';
-	
+	ptr->ShowName();
+	ptr->ShowHp();
+
 	ptr= m_enemyP;
-	std::cout << ptr->GetName() << '\n';
-	std::cout << "HP : " << ptr->GetHpCurrent() << '/' << ptr->GetHpMax() << '\n';
+	ptr->ShowName();
+	ptr->ShowHp();
 }
 
 void Battle::SceneSetTurn(Character** attackerPP, Character** defenderPP)
@@ -97,7 +102,7 @@ int Battle::SceneAtk(Character* attackerP)
 		InputString("공격하려면 확인을 눌러주세요.");
 	}
 
-	std::cout << "attack power : " << powerAttack << std::showpos<<'(' << attackerP->GetAtk() << ")\n"<< std::noshowpos;
+	std::cout << "attack power : " << powerAttack << '('<<ToSignedNumber(attackerP->GetAtk())<<')' << '\n';
 
 	return powerAttack;
 }
@@ -154,7 +159,7 @@ int Battle::SceneGuard(Character* defenderP, int powerAtk)
 	int powerGuard{ defenderP->Guard() };
 	int powerFine = powerAtk - powerGuard;
 	
-	std::cout << "Guard power : " << powerGuard << std::showpos<< '(' << defenderP->GetDef() << ")\n"<< std::noshowpos;
+	std::cout << "Guard power : " << powerGuard <<'(' << ToSignedNumber(defenderP->GetDef()) <<')'<< '\n';
 	if (powerFine <= CHARACTER_GUARD_POWER_MIN)
 	{
 		Messege("Minimum damage!\n");
@@ -168,7 +173,7 @@ bool Battle::SceneAvoid(Character* defenderP, int powerAtk)
 {
 	int powerAvoid{ defenderP->Avoid() };
 
-	std::cout <<"Avoid power : " << powerAvoid << std::showpos << '(' << defenderP->GetDex() << ")\n"<< std::noshowpos;
+	std::cout <<"Avoid power : " << powerAvoid <<'('<< ToSignedNumber(defenderP->Avoid()) <<')'<< '\n';
 	if (powerAvoid >= powerAtk)
 	{
 		Messege("Avoid success!\n");
@@ -214,7 +219,7 @@ bool Battle::SceneDamageStep(Character* attackerP, Character* defenderP,COMMAND 
 
 	std::cout << attackerP->GetName() << " injured " << damageFine << " to " << defenderP->GetName() << '\n';
 
-	bool isAlive{ defenderP->SetHp(powerFine) };
+	bool isAlive{ defenderP->UpdateHp(powerFine) };
 
 	if (isAlive)
 	{
