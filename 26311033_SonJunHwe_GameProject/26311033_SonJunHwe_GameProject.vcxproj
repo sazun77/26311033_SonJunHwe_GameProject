@@ -129,12 +129,10 @@
     <ClCompile Include="Battle\Battle.cpp" />
     <ClCompile Include="Battle\Character.cpp" />
     <ClCompile Include="Battle\Dice.cpp" />
-    <ClCompile Include="Battle\main.cpp" />
     <ClCompile Include="Battle\MyHeader.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="SoundEffectter.cpp" />
-    <ClCompile Include="TextureDrawer.cpp" />
-    <ClCompile Include="WindowMain.cpp" />
+    <ClCompile Include="Window.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -146,8 +144,7 @@
     <ClInclude Include="Battle\MyHeader.h" />
     <ClInclude Include="Constants.h" />
     <ClInclude Include="SoundEffectter.h" />
-    <ClInclude Include="TextureDrawer.h" />
-    <ClInclude Include="WindowMain.h" />
+    <ClInclude Include="Window.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

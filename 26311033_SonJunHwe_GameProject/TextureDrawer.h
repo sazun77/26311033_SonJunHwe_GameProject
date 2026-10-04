@@ -1,6 +1,11 @@
 #pragma once
-#include "Constants.h"
 #include "glc2d.h"
+#include "string"
+
+enum
+{
+	FILENAMEMAX=250,
+};
 
 class TextureDrawer
 {
@@ -22,7 +27,7 @@ private:
 	int m_height{};
 	VEC2 m_pos{};
 
-	char m_imageP[FILENAMEMAX]{};
+	char* m_imageP{};
 };
 
 //int RenderMain()

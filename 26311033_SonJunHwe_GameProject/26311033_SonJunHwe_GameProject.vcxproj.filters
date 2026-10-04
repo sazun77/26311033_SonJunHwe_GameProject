@@ -24,10 +24,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="TextureDrawer.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="WindowMain.cpp">
+    <ClCompile Include="Window.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="SoundEffectter.cpp">
@@ -48,9 +45,6 @@
     <ClCompile Include="Battle\Dice.cpp">
       <Filter>소스 파일\BattleCpp</Filter>
     </ClCompile>
-    <ClCompile Include="Battle\main.cpp">
-      <Filter>소스 파일\BattleCpp</Filter>
-    </ClCompile>
     <ClCompile Include="Battle\MyHeader.cpp">
       <Filter>소스 파일\BattleCpp</Filter>
     </ClCompile>
@@ -59,10 +53,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="TextureDrawer.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="WindowMain.h">
+    <ClInclude Include="Window.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="Constants.h">

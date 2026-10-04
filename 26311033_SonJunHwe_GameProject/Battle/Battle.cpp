@@ -20,13 +20,14 @@ bool Battle::BattleMain()
 
 	m_playerP->ShowName();
 	m_playerP->ShowHp();
-	m_playerP->ShowStatus();
-	Messege("\n");
+	m_playerP->ShowStatus();Messege("\n");
+
 	m_enemyP->ShowName();
 	m_playerP->ShowHp();
-	m_enemyP->ShowStatus();
-	Messege("battle start\n");
+	m_enemyP->ShowStatus(); Messege("\n");
+
 	Messege("=====\n");
+	Messege("battle start\n");
 
 	while (true)
 	{
