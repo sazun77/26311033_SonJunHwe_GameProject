@@ -1,5 +1,7 @@
 #pragma once
+
 #include <vector>
+#include "glc2d.h"
 #include "TextureDrawer.h"
 
 int RenderMain();

@@ -1,11 +1,6 @@
 #pragma once
-
-// include the 2d game header file
-#include "glc2d.h"
-#include <stdio.h>
-#include <string>
-
 #include "Constants.h"
+#include "glc2d.h"
 
 class TextureDrawer
 {

@@ -16,11 +16,14 @@
     <Filter Include="Dummy">
       <UniqueIdentifier>{cc7cbf19-0953-483f-bfe7-1dd3745f7949}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\BattleCpp">
+      <UniqueIdentifier>{7f92e730-c547-4b62-94e4-1a559b4adeeb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\BattleH">
+      <UniqueIdentifier>{f5914f08-4c5d-47d4-a505-05a3fc12ad1c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="TextureDrawer.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
@@ -29,6 +32,27 @@
     </ClCompile>
     <ClCompile Include="SoundEffectter.cpp">
       <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CombatTest\MyHeader.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Battle\Battle.cpp">
+      <Filter>소스 파일\BattleCpp</Filter>
+    </ClCompile>
+    <ClCompile Include="Battle\Character.cpp">
+      <Filter>소스 파일\BattleCpp</Filter>
+    </ClCompile>
+    <ClCompile Include="Battle\Dice.cpp">
+      <Filter>소스 파일\BattleCpp</Filter>
+    </ClCompile>
+    <ClCompile Include="Battle\main.cpp">
+      <Filter>소스 파일\BattleCpp</Filter>
+    </ClCompile>
+    <ClCompile Include="Battle\MyHeader.cpp">
+      <Filter>소스 파일\BattleCpp</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -46,6 +70,18 @@
     </ClInclude>
     <ClInclude Include="SoundEffectter.h">
       <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Battle\Battle.h">
+      <Filter>헤더 파일\BattleH</Filter>
+    </ClInclude>
+    <ClInclude Include="Battle\Character.h">
+      <Filter>헤더 파일\BattleH</Filter>
+    </ClInclude>
+    <ClInclude Include="Battle\Dice.h">
+      <Filter>헤더 파일\BattleH</Filter>
+    </ClInclude>
+    <ClInclude Include="Battle\MyHeader.h">
+      <Filter>헤더 파일\BattleH</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

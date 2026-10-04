@@ -125,6 +125,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\CombatTest\MyHeader.cpp" />
+    <ClCompile Include="Battle\Battle.cpp" />
+    <ClCompile Include="Battle\Character.cpp" />
+    <ClCompile Include="Battle\Dice.cpp" />
+    <ClCompile Include="Battle\main.cpp" />
+    <ClCompile Include="Battle\MyHeader.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="SoundEffectter.cpp" />
     <ClCompile Include="TextureDrawer.cpp" />
@@ -134,6 +140,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Battle\Battle.h" />
+    <ClInclude Include="Battle\Character.h" />
+    <ClInclude Include="Battle\Dice.h" />
+    <ClInclude Include="Battle\MyHeader.h" />
     <ClInclude Include="Constants.h" />
     <ClInclude Include="SoundEffectter.h" />
     <ClInclude Include="TextureDrawer.h" />
