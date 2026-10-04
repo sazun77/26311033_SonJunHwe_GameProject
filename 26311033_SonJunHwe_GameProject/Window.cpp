@@ -1,22 +1,3 @@
-//// link the 2d game library
-//#if defined(_DEBUG)
-//#if defined(_M_X64) // 64-bit 아키텍처
-//#pragma comment(lib, "glc2d_x64_debug.lib")
-//#elif defined(_M_IX86) // 32-bit 아키텍처
-//#pragma comment(lib, "glc2d_win32_debug.lib")
-//#endif
-//#else
-//#if defined(_M_X64)
-//#pragma comment(lib, "glc2d_x64_release.lib")
-//#elif defined(_M_IX86)
-//#pragma comment(lib, "glc2d_win32_release.lib")
-//#endif
-//#endif
-//
-//// include the 2d game header file
-//#include "glc2d.h"
-//#include <stdio.h>
-//
 #include <iostream>
 #include <thread>
 #include <time.h>
@@ -51,10 +32,10 @@ int AppMouse(int x, int y, int z, int event)
 
 int Window::Render()
 {
-	//for (auto& image : m_images)
-	//{
-	//	image.();
-	//}
+	for (auto& image : m_images)
+	{
+		image.Draw();
+	}
 
 	return SUCCESS;
 }
@@ -89,8 +70,8 @@ int Window::Mouse(int x, int y, int z, int event)
 
 void Window::FrameMove_Update()
 {
-	std::cout << ++count << '\n';
-	if (count > 60)
+	std::cout << ++m_count << '\n';
+	if (m_count > 60)
 	{
 		Close();
 	}
@@ -166,7 +147,7 @@ void Window::Setup()
 	
 	// 윈도우 생성
 	std::cout << "Createing Window\n";
-	g2_CreateWin(m_pos.x, m_pos.y, m_width, m_height, m_name);
+	g2_CreateWin(static_cast<int>(m_pos.x), static_cast<int>(m_pos.y), m_width, m_height, m_name);
 	
 	// 윈도우 핸들 받아오기
 	// 이거 있어야 창 닫기 가능.
@@ -185,18 +166,18 @@ void Window::Destroy()
 	g2_DestroyWin();
 }
 
-void Window::SetPos(float x, float y)
+void Window::SetPos(const float x, const float y)
 {
 	SetPosX(x);
 	SetPosY(y);
 }
 
-void Window::SetPosX(float x)
+void Window::SetPosX(const float x)
 {
 	m_pos.x = x;
 }
 
-void Window::SetPosY(float y)
+void Window::SetPosY(const float y)
 {
 	m_pos.y = y;
 }

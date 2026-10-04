@@ -128,6 +128,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="SoundEffectter.cpp" />
     <ClCompile Include="Window.cpp" />
+    <ClCompile Include="WindowImage.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -136,6 +137,7 @@
     <ClInclude Include="Constants.h" />
     <ClInclude Include="SoundEffectter.h" />
     <ClInclude Include="Window.h" />
+    <ClInclude Include="WindowImage.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

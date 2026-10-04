@@ -2,7 +2,7 @@
 
 #include <vector>
 #include "glc2d.h"
-#include "TextureDrawer.h"
+#include "WindowImage.h"
 
 enum
 {
@@ -63,6 +63,7 @@ private:
 	int m_mouseZ{};
 
 	//
-	int count{};//DEBUG
+	int m_count{};//DEBUG
+	std::vector< WindowImage> m_images{};
 };
 
