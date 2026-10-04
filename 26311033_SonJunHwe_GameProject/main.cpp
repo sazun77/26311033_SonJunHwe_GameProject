@@ -19,6 +19,7 @@
 //#include "Battle/Dice.h"
 //#include "Battle/Character.h"
 //#include "Battle/Battle.h"
+#include <iostream>
 #include "Window.h"
 //#include "Constants.h"
 //#include "SoundEffectter.h"
@@ -28,14 +29,27 @@ Window window{};
 
 int main()
 {
-    window.Main_Start();
+    // 콘솔 창 위치 및 크기 설정
+    {
+        HWND hConsole = GetConsoleWindow();
+        int consoleX{ 0 };
+        int consoleY{ GetSystemMetrics(SM_CYSCREEN) / 2 };
+        int consoleWidth{ GetSystemMetrics(SM_CXSCREEN) / 2 };
+        int consoleHeight{ GetSystemMetrics(SM_CYSCREEN) / 2 };
+
+        MoveWindow(hConsole, consoleX, consoleY, consoleWidth, consoleHeight, TRUE);
+    }
+    // 초기화
+    window.Setup();
+    // 실행
+    window.Run();
+    // 폭*파
+    window.Destroy();
+    
     //std::cout << "window setup\n";
     //window.Setup();
 
-    //// 콘솔 창 위치 및 크기 설정
-    //HWND hConsole = GetConsoleWindow();
-    //MoveWindow(hConsole, 0, 0, GetSystemMetrics(SM_CXSCREEN) / 2, GetSystemMetrics(SM_CYSCREEN) / 2, TRUE);
-    //// 랜덤 설정.
+    // 랜덤 설정.
     //Dice dice{};
     //dice.DiceSetup();
     //// 플레이어, 적 설정.

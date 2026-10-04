@@ -6,21 +6,38 @@
 
 enum
 {
+	// 마우스 이벤트 (0: LButton, 1: RButton, 2: MButton)
+	LButton=0,
+	RButton=1,
+	MButton=2,
+	//
 	GAMETICK = 300,
+	SUCCESS=1,
 };
 
- int RenderMain();
+ int AppRender();
+ int AppFrameMove();
+ int AppKeyboard(uint8_t* keyP);
+ int AppMouse(int x,int y, int z,int event);
 
 class Window
 {
 
 public:
+	int Render();
+	int FrameMove();
+	int Keyboard(uint8_t* keyP);
+	int Mouse(int x, int y, int z, int event);
+
+	void FrameMove_Update();
+	void FrameMove_Mouse();
+	void FrameMove_Keyboard();
 	//void RenderDetailes();
-	void Main_Start();
-	void Main_Setup();
-	void Main_Rendering();
-	void Main_Sleep(int delay=GAMETICK);
-	void Main_Destroy();
+	void Setup();
+	void Run();
+	void Sleep(int delay=GAMETICK);
+	void Close();
+	void Destroy();
 
 	void SetPos(float x, float y);
 	void SetPosX(float x);
@@ -33,11 +50,19 @@ public:
 
 	
 private:
+	HWND m_hWnd{};
 	VEC2 m_pos{};
-	const int m_width{1280};
-	const int m_height{ 720 };
+	const int m_width{960};
+	const int m_height{ 540 };
 	const char* m_name{ "PressSpace" };
 
 	const int m_color{ 0x77777777 };
+	//mouse
+	int m_mouseX{};
+	int m_mouseY{};
+	int m_mouseZ{};
+
+	//
+	int count{};//DEBUG
 };
 
