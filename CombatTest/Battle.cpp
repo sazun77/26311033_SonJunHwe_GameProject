@@ -19,9 +19,11 @@ bool Battle::BattleMain()
 	unsigned int round{};
 
 	m_playerP->ShowName();
+	m_playerP->ShowHp();
 	m_playerP->ShowStatus();
 	Messege("\n");
 	m_enemyP->ShowName();
+	m_playerP->ShowHp();
 	m_enemyP->ShowStatus();
 	Messege("battle start\n");
 	Messege("=====\n");
@@ -35,9 +37,10 @@ bool Battle::BattleMain()
 		cout << '\n';
 
 		int powerAttack = SceneAtk(attackerP);
-		//ToNext();
+		cout << '\n';
 
 		COMMAND inputCommand{ SceneDefence(defenderP,powerAttack) }; 
+		cout << '\n';
 
 		bool isDefenderAlive = SceneDamageStep(attackerP, defenderP, inputCommand, powerAttack);
 		ToNext();
@@ -111,7 +114,7 @@ COMMAND Battle::SceneDefence(Character* defenderP, int powerAtk)
 {
 	if (m_isAllayTurn)
 	{
-		if (powerAtk <= DR_20ICOSAHEDRON / 2)
+		if (powerAtk <= defenderP->GetDr() / 2 + defenderP->GetDex())
 		{
 			std::cout << defenderP->GetName() << " chosed avoid\n";
 			return AVOID;
@@ -173,7 +176,7 @@ bool Battle::SceneAvoid(Character* defenderP, int powerAtk)
 {
 	int powerAvoid{ defenderP->Avoid() };
 
-	std::cout <<"Avoid power : " << powerAvoid <<'('<< ToSignedNumber(defenderP->Avoid()) <<')'<< '\n';
+	std::cout <<"Avoid power : " << powerAvoid <<'('<< ToSignedNumber(defenderP->GetDex()) <<')'<< '\n';
 	if (powerAvoid >= powerAtk)
 	{
 		Messege("Avoid success!\n");

@@ -26,12 +26,14 @@ public:
 	int GetAtk();
 	int GetDef();
 	int GetDex();
+	int GetDr();
 
-	void UpdateStatus();
+	void UpdateStatus(int newLevel);
 	bool UpdateHp(int damage = 0);
-	void UpdateLevel();
 	void UpdateExp(int expChange);
 
+	void IncreaseLevel();
+	void IncreaseStatusRandom();
 
 	void ShowName();
 	void ShowHp();
@@ -43,7 +45,7 @@ public:
 private:
 	int m_hpMax{ CHARACTER_HP };
 	int m_hpCurrent{ CHARACTER_HP };
-	int m_level{1};
+	int m_level{};
 	int m_expReqired{};
 	int m_exp{};
 	int m_atk{};
