@@ -23,7 +23,6 @@
 #include <filesystem>
 #include "Window.h"
 #include "Utility.h"
-#include "Constants.h"
 #include "SceneBattle.h"
 
 Window window{};
@@ -37,9 +36,9 @@ int main()
     window.Initialize();
     sceneBattle.Initialize();
     // ½ÇÇà
-    sceneBattle.Run();
+    window.Run();
     // Æø*ÆÄ
-    sceneBattle.Destroy();
+    window.Destroy();
     
     //std::cout << "window setup\n";
     //window.Setup();

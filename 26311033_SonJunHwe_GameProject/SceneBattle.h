@@ -17,6 +17,7 @@ public:
 
 
 	sprite m_iconNone{};
+	sprite m_iconNone2{};
 	sprite m_iconAttack{};
 	sprite m_iconAvoid{};
 	sprite m_iconGuard{};

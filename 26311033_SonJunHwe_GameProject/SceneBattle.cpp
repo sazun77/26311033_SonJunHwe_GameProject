@@ -14,6 +14,7 @@ void SceneBattle::InitializeImageLoad()
 	m_background = g2_TextureLoad("Resources/Textures/Background/background.png");
 
 	m_iconNone= g2_TextureLoad("Resources/Textures/UI/Icon_None.png");
+	m_iconNone2= g2_TextureLoad("Resources/Textures/UI/Icon_None.png");
 	m_iconAttack = g2_TextureLoad("Resources/Textures/UI/Icon_attack.png");
 	m_iconAvoid = g2_TextureLoad("Resources/Textures/UI/Icon_avoid.png");
 	m_iconGuard = g2_TextureLoad("Resources/Textures/UI/Icon_guard.png");
@@ -37,6 +38,6 @@ void SceneBattle::InitializeObject()
 	m_playerObject.Initialize(m_playerIdle, WINDOWX/8, WINDOWY/8*5);
 	m_enemyObject.Initialize(m_enemyIdle, WINDOWX/8*5, WINDOWY/8*5);
 	m_playerActionObject.Initialize(m_iconNone, WINDOWX / 8, WINDOWY / 4);
-	m_enemyActionObject.Initialize(m_iconNone, WINDOWX / 8, WINDOWY / 4);
+	m_enemyActionObject.Initialize(m_iconNone2, WINDOWX / 8, WINDOWY / 4);
 
 }

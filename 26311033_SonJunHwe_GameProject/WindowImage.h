@@ -5,7 +5,6 @@
 #include <stdio.h>
 #include <string>
 
-#include "Constants.h"
 #define INPUT_NULL -777.7f
 
 enum
