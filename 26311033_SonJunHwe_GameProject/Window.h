@@ -4,9 +4,10 @@
 #include "glc2d.h"
 #include "WindowImage.h"
 
-enum
+enum WINDOW
 {
 	// 마우스 이벤트 (0: LButton, 1: RButton, 2: MButton)
+	NButton=-1,
 	LButton=0,
 	RButton=1,
 	MButton=2,
@@ -53,7 +54,6 @@ public:
 	int GetWidth();
 	int GetHeight();
 
-	
 private:
 	HWND m_hWnd{};
 	VEC2 m_pos{};
@@ -70,5 +70,8 @@ private:
 	//
 	int m_count{};//DEBUG
 	std::vector< WindowImage*> m_images{};
+public:
+	WINDOW m_recentMouseInput{};
+
 };
 

@@ -16,6 +16,12 @@
     <Filter Include="Dummy">
       <UniqueIdentifier>{cc7cbf19-0953-483f-bfe7-1dd3745f7949}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\Battle">
+      <UniqueIdentifier>{91d1dbf3-6326-450e-8727-0a5bfa35b1b9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\Battle">
+      <UniqueIdentifier>{49946fa5-4618-447a-b09f-697de33fbf9c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Window.cpp">
@@ -36,6 +42,18 @@
     <ClCompile Include="SceneBattle.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="Battle\Battle.cpp">
+      <Filter>소스 파일\Battle</Filter>
+    </ClCompile>
+    <ClCompile Include="Battle\Character.cpp">
+      <Filter>소스 파일\Battle</Filter>
+    </ClCompile>
+    <ClCompile Include="Battle\Dice.cpp">
+      <Filter>소스 파일\Battle</Filter>
+    </ClCompile>
+    <ClCompile Include="Battle\MyHeader.cpp">
+      <Filter>소스 파일\Battle</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -55,6 +73,18 @@
     </ClInclude>
     <ClInclude Include="SceneBattle.h">
       <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Battle\Battle.h">
+      <Filter>헤더 파일\Battle</Filter>
+    </ClInclude>
+    <ClInclude Include="Battle\Character.h">
+      <Filter>헤더 파일\Battle</Filter>
+    </ClInclude>
+    <ClInclude Include="Battle\Dice.h">
+      <Filter>헤더 파일\Battle</Filter>
+    </ClInclude>
+    <ClInclude Include="Battle\MyHeader.h">
+      <Filter>헤더 파일\Battle</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

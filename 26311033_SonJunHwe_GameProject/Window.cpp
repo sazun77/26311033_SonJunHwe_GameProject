@@ -6,10 +6,12 @@
 #include "Window.h"
 #include "SoundEffectter.h"
 #include "SceneBattle.h"
+#include "Battle/Battle.h"
 
 using std::cout;
-extern Window window;
 
+extern Window window;
+extern SceneBattle sceneBattle;
 // RenderDetailes은 일종의 update(), main()의 역할인 듯?
 int AppRender()
 {
@@ -54,8 +56,8 @@ int Window::FrameMove()
 }
 void Window::FrameMove_Update()
 {
-
-
+	sceneBattle.m_battle.BattleMain();
+	
 
 	if (false)
 	{
@@ -70,20 +72,24 @@ void Window::FrameMove_Mouse()
 
 	if (g2_GetMouseEvent(LButton))
 	{
-		cout << "L click\n";
+		cout << "L click\n"; 
+		m_recentMouseInput = LButton;
 	}
 	else if (g2_GetMouseEvent(RButton))
 	{
 		cout << "R click\n";
-
+		m_recentMouseInput = RButton;
 	}
 	else if (g2_GetMouseEvent(MButton))
 	{
 		cout << "M click\n";
+		m_recentMouseInput = MButton;
+
 	}
 	else
 	{
 		cout << "No click\n";
+		m_recentMouseInput = NButton;
 	}
 }
 
@@ -95,7 +101,7 @@ void Window::FrameMove_Keyboard()
 	{
 		if (pKeyboard[i])
 		{
-			printf("You Pressed %d key!!!\n", i);
+			printf("You Pressed %d key!!!\n", i);	//1은 49
 		}
 	}
 }

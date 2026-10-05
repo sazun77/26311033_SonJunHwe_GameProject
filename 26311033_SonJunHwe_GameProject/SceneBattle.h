@@ -1,5 +1,9 @@
 #pragma once
+#include "Window.h"
 #include "WindowImage.h"
+#include "Battle/Battle.h"
+#include "Battle/Character.h"
+#include "Battle/Dice.h"
 typedef int sprite;
 
 class SceneBattle
@@ -8,10 +12,9 @@ public:
 	void Initialize();
 	void InitializeImageLoad();
 	void InitializeObject();
+	//void Run();
 
-	void Run();
-
-	void Destroy();
+	//void Destroy();
 public:
 	sprite m_background{};
 
@@ -34,6 +37,11 @@ public:
 	sprite m_enemyGuard{};
 	sprite m_enemyIdle{};
 public:
+	Dice m_dice{};
+	Character m_player{};
+	Character m_enemy{};
+	Battle m_battle{};
+
 	WindowImage m_backgroundObject{};
 	WindowImage m_playerObject{};
 	WindowImage m_enemyObject{};

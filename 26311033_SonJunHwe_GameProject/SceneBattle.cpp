@@ -1,6 +1,9 @@
 #include "SceneBattle.h"
 #include "Window.h"
-extern Window window;
+#include "WindowImage.h"
+#include "Battle/Battle.h"
+#include "Battle/Character.h"
+#include "Battle/Dice.h"
 
 void SceneBattle::Initialize()
 {
@@ -34,6 +37,11 @@ void SceneBattle::InitializeImageLoad()
 
 void SceneBattle::InitializeObject()
 {
+	m_dice.DiceSetup();
+	m_player.SetSetupStandard("Player", &m_dice, 3);
+	m_enemy.SetSetupStandard("Enemy", &m_dice, 3);
+	m_battle.Setup(&m_player, &m_enemy);
+
 	m_backgroundObject.Initialize(m_background, 0, 0);
 	m_playerObject.Initialize(m_playerIdle, WINDOWX/8, WINDOWY/8*5);
 	m_enemyObject.Initialize(m_enemyIdle, WINDOWX/8*5, WINDOWY/8*5);
