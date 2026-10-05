@@ -24,24 +24,22 @@
 #include "Window.h"
 #include "Utility.h"
 #include "Constants.h"
-//#include "SoundEffectter.h"
-void MainSetup();
+#include "SceneBattle.h"
 
 Window window{};
-WindowImage background{};
-WindowImage background2{};
+SceneBattle sceneBattle{};
 //SoundEffectter testSound{};
 
 int main()
 {
     SetConsole();
     // 초기화
-    MainSetup();
     window.Initialize();
+    sceneBattle.Initialize();
     // 실행
-    window.Run();
+    sceneBattle.Run();
     // 폭*파
-    window.Destroy();
+    sceneBattle.Destroy();
     
     //std::cout << "window setup\n";
     //window.Setup();
@@ -74,10 +72,4 @@ int main()
 
     //std::cout << "window destroy\n";
     //window.Destroy();
-}
-
-void MainSetup()
-{
-    background.Initialize(BACKGROUND);
-    window.AddImage(&background);
 }

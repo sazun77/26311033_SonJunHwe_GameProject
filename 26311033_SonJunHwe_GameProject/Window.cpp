@@ -5,6 +5,7 @@
 
 #include "Window.h"
 #include "SoundEffectter.h"
+#include "SceneBattle.h"
 
 using std::cout;
 extern Window window;
@@ -51,32 +52,16 @@ int Window::FrameMove()
 	Sleep();
 	return SUCCESS;
 }
-
-int Window::Keyboard(uint8_t* keyP)
-{
-	std::cout << keyP << '\n';
-
-	return SUCCESS;
-}
-
-int Window::Mouse(int x, int y, int z, int event)
-{
-	std::cout << x << ' ';
-	std::cout << y << ' ';
-	std::cout << z << ' ';
-	std::cout << event << '\n';
-	return SUCCESS;
-}
-
 void Window::FrameMove_Update()
 {
-	std::cout << ++m_count << '\n';
-	if (m_count > 60)
+
+
+
+	if (false)
 	{
 		Close();
 	}
 }
-
 void Window::FrameMove_Mouse()
 {
 	m_mouseX = g2_GetMouseX();
@@ -114,6 +99,23 @@ void Window::FrameMove_Keyboard()
 		}
 	}
 }
+
+int Window::Keyboard(uint8_t* keyP)
+{
+	std::cout << keyP << '\n';
+
+	return SUCCESS;
+}
+
+int Window::Mouse(int x, int y, int z, int event)
+{
+	std::cout << x << ' ';
+	std::cout << y << ' ';
+	std::cout << z << ' ';
+	std::cout << event << '\n';
+	return SUCCESS;
+}
+
 
 void Window::Sleep(int delay)
 {

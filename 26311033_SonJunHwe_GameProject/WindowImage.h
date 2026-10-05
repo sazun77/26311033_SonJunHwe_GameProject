@@ -18,11 +18,11 @@ enum
 class WindowImage
 {
 public:
-	void Initialize(const char* fileName,const float x =INPUT_NULL,const float y= INPUT_NULL);
+	void Initialize(int sprite,const float x =INPUT_NULL,const float y= INPUT_NULL);
 	void Draw();
 	void Release();
 
-	void SetImage(const char* fileName);
+	void SetImage(int sprite);
 	void SetAlpha(int alpha);
 	void SetPos(const float x, const float y);
 	void SetPosX(const float x);
@@ -35,14 +35,14 @@ public:
 	float GetPosY();
 
 private:
-	int m_index{};
+	int m_sprite{};
 	int m_width{};
 	int m_height{};
 	int m_alpha{VISIBLE};//투명도(밝기) 관련.
 
 	VEC2 m_pos{};
 
-	char m_imageP[FILENAMEMAX]{};
+	//const char* m_imageP{};
 };
 
 //int RenderMain()

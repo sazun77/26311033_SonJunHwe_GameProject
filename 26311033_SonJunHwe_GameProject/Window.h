@@ -13,6 +13,9 @@ enum
 	//
 	GAMETICK = 300,
 	SUCCESS=1,
+
+	WINDOWX=960,
+	WINDOWY=540,
 };
 
  int AppRender();
