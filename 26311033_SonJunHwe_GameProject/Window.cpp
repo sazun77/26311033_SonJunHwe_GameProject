@@ -34,7 +34,7 @@ int Window::Render()
 {
 	for (auto& image : m_images)
 	{
-		image.Draw();
+		image->Draw();
 	}
 
 	return SUCCESS;
@@ -125,7 +125,7 @@ void Window::Close()
 	PostMessage(m_hWnd, WM_CLOSE, 0, 0);
 }
 
-void Window::Setup()
+void Window::Initialize()
 {
 	// SDK √ ±‚»≠
 	std::cout << "Initialliseing SDK\n";
@@ -164,6 +164,11 @@ void Window::Destroy()
 {
 	std::cout << "Desroying Window\n";
 	g2_DestroyWin();
+}
+
+void Window::AddImage(WindowImage* windowImage)
+{
+	m_images.push_back(windowImage);
 }
 
 void Window::SetPos(const float x, const float y)

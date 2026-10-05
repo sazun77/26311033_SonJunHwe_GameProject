@@ -20,27 +20,24 @@
 //#include "Battle/Character.h"
 //#include "Battle/Battle.h"
 #include <iostream>
+#include <filesystem>
 #include "Window.h"
-//#include "Constants.h"
+#include "Utility.h"
+#include "Constants.h"
 //#include "SoundEffectter.h"
+void MainSetup();
 
 Window window{};
+WindowImage background{};
+WindowImage background2{};
 //SoundEffectter testSound{};
 
 int main()
 {
-    // 콘솔 창 위치 및 크기 설정
-    {
-        HWND hConsole = GetConsoleWindow();
-        int consoleX{ 0 };
-        int consoleY{ GetSystemMetrics(SM_CYSCREEN) / 2 };
-        int consoleWidth{ GetSystemMetrics(SM_CXSCREEN) / 2 };
-        int consoleHeight{ GetSystemMetrics(SM_CYSCREEN) / 2 };
-
-        MoveWindow(hConsole, consoleX, consoleY, consoleWidth, consoleHeight, TRUE);
-    }
+    SetConsole();
     // 초기화
-    window.Setup();
+    MainSetup();
+    window.Initialize();
     // 실행
     window.Run();
     // 폭*파
@@ -77,4 +74,10 @@ int main()
 
     //std::cout << "window destroy\n";
     //window.Destroy();
+}
+
+void MainSetup()
+{
+    background.Initialize(BACKGROUND);
+    window.AddImage(&background);
 }

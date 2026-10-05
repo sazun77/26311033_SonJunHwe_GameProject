@@ -18,10 +18,11 @@ enum
 class WindowImage
 {
 public:
-	void Setup(const char* fileName,const float x =INPUT_NULL,const float y= INPUT_NULL);
+	void Initialize(const char* fileName,const float x =INPUT_NULL,const float y= INPUT_NULL);
 	void Draw();
 	void Release();
 
+	void SetImage(const char* fileName);
 	void SetAlpha(int alpha);
 	void SetPos(const float x, const float y);
 	void SetPosX(const float x);
@@ -33,7 +34,6 @@ public:
 	float GetPosX();
 	float GetPosY();
 
-	void UpdateImage();
 private:
 	int m_index{};
 	int m_width{};
@@ -42,7 +42,7 @@ private:
 
 	VEC2 m_pos{};
 
-	const char* m_imageP{};
+	char m_imageP[FILENAMEMAX]{};
 };
 
 //int RenderMain()

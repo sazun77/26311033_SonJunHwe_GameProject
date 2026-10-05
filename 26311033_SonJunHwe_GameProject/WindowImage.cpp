@@ -1,15 +1,15 @@
 #include "WindowImage.h"
+#include "Window.h"
 #include "glc2d.h"
+
 #include <iostream>
 #include <string.h>
 
+extern Window window;
 // 이후에 활용할 수 있도록 이미지의 주소,인덱스,너비,폭을 설정함.
-void WindowImage::Setup(const char* fileName, const float x , const float y )
+void WindowImage::Initialize(const char* fileName, const float x , const float y )
 {
-	m_imageP = fileName;
-	m_index = g2_TextureLoad(m_imageP);
-	m_width = g2_TextureWidth(m_index);
-	m_height = g2_TextureHeight(m_index);
+	SetImage(fileName);
 
 	if (x != INPUT_NULL)
 	{
@@ -19,6 +19,7 @@ void WindowImage::Setup(const char* fileName, const float x , const float y )
 	{
 		SetPosY(y);
 	}
+
 }
 // 좌표를 입력하면 해당 위치에 이미지 표시.
 // 렌더를 안하면 바로 다음render()에서 아라야시키 당하는 듯.
@@ -34,6 +35,17 @@ void WindowImage::Draw()
 void WindowImage::Release()
 {
 	g2_TextureRelease(m_index);
+}
+
+
+
+void WindowImage::SetImage(const char* fileName)
+{
+	strcpy(m_imageP, fileName);
+	m_index = g2_TextureLoad(m_imageP);
+
+	m_width = g2_TextureWidth(m_index);
+	m_height = g2_TextureHeight(m_index);
 }
 
 void WindowImage::SetAlpha(int alpha)
@@ -81,3 +93,4 @@ float WindowImage::GetPosY()
 {
 	return m_pos.y;
 }
+

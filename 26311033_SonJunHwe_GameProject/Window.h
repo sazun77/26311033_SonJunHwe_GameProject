@@ -33,11 +33,13 @@ public:
 	void FrameMove_Mouse();
 	void FrameMove_Keyboard();
 	//void RenderDetailes();
-	void Setup();
+	void Initialize();
 	void Run();
 	void Sleep(int delay=GAMETICK);
 	void Close();
 	void Destroy();
+	
+	void AddImage(WindowImage* windowImage);
 
 	void SetPos(float x, float y);
 	void SetPosX(float x);
@@ -64,6 +66,6 @@ private:
 
 	//
 	int m_count{};//DEBUG
-	std::vector< WindowImage> m_images{};
+	std::vector< WindowImage*> m_images{};
 };
 
